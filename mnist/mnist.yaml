@@ -1,0 +1,16 @@
+apiVersion: "kubeflow.org/v1beta1"
+kind: "TFJob"
+metadata:
+  name: "mnist"
+  namespace: kubeflow 
+spec:
+  cleanPodPolicy: None 
+  tfReplicaSpecs:
+    Worker:
+      replicas: 1 
+      restartPolicy: Never
+      template:
+        spec:
+          containers:
+            - name: tensorflow
+              image: gaocegege/mnist:1
